@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- 📱 MOBILE FIX (IMPORTANT) -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Love ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background: #ff69b4;
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* 💖 hearts background */
+.hearts {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.hearts span {
+    position: absolute;
+    bottom: -50px;
+    font-size: 22px;
+    opacity: 0.8;
+    animation: floatUp linear infinite;
+    filter: drop-shadow(0 0 6px white);
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+.hearts span:nth-child(1){left:5%; animation-duration:8s;}
+.hearts span:nth-child(2){left:15%; animation-duration:10s;}
+.hearts span:nth-child(3){left:25%; animation-duration:7s;}
+.hearts span:nth-child(4){left:35%; animation-duration:12s;}
+.hearts span:nth-child(5){left:45%; animation-duration:9s;}
+.hearts span:nth-child(6){left:55%; animation-duration:11s;}
+.hearts span:nth-child(7){left:65%; animation-duration:8s;}
+.hearts span:nth-child(8){left:75%; animation-duration:13s;}
+.hearts span:nth-child(9){left:85%; animation-duration:10s;}
+.hearts span:nth-child(10){left:95%; animation-duration:9s;}
+
+/* popup */
+.popup {
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: #ff1493;
+    padding: 30px;
+    border-radius: 20px;
+    z-index: 1000;
+}
+
+/* buttons */
+button {
+    padding: 12px 20px;
+    margin: 8px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff1493;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* sections */
+.section {
+    display: none;
+    margin: 40px auto;
+    width: 70%;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 25px;
+}
+
+/* text style */
+h1, h2, p {
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+.cinematic {
+    font-size: 18px;
+    line-height: 1.8;
+    font-style: italic;
+}
+
+/* 💍 FOREVER FIX */
+.foreverBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: #ff1493;
+    padding: 25px;
+    border-radius: 20px;
+    display: none;
+    z-index: 9999;
+}
+
+/* 📱 MOBILE PERFECT UI */
+@media (max-width: 768px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .section {
+        width: 90%;
+        padding: 18px;
+        margin: 20px auto;
+    }
+
+    button {
+        width: 90%;
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .popup {
+        width: 80%;
+        padding: 20px;
+    }
+
+    .foreverBox {
+        width: 80%;
+        padding: 20px;
+    }
+
+    img {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+    }
+
+    audio {
+        width: 100%;
+    }
+
+    .hearts span {
+        font-size: 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 💖 hearts -->
+<div class="hearts">
+    <span>💖</span><span>💗</span><span>💖</span><span>💗</span><span>💖</span>
+    <span>💗</span><span>💖</span><span>💗</span><span>💖</span><span>💗</span>
+</div>
+
+<!-- 💍 FOREVER POPUP -->
+<div id="foreverBox" class="foreverBox">
+    <div id="foreverContent">
+        <h2>Will u be mine forever? 💍</h2>
+        <button onclick="yesForever()">Yes ❤️</button>
+        <button onclick="noForever()">No 💔</button>
+    </div>
+</div>
+
+<div id="popup" class="popup">
+    <h3>Enter the secret code 💌</h3>
+    <input type="text">
+    <br><br>
+    <button onclick="enterSite()">Enter</button>
+</div>
+
+<h1 id="welcomeMessage" style="display:none;"></h1>
+
+<div id="buttons" style="display:none;">
+    <button onclick="showSection('loveLetter')">❤️ Love Letter</button>
+    <button onclick="showSection('music')">🎵 Music</button>
+    <button onclick="showSection('notes')">📝 Notes</button>
+    <button onclick="showSection('gallery')">📸 Gallery</button>
+    <button onclick="forever()">💍 Forever?</button>
+</div>
+
+<!-- 💌 LETTER -->
+<div id="loveLetter" class="section">
+    <h1>My letter to my forever</h1>
+    <p class="cinematic" id="typedText"></p>
+</div>
+
+<!-- 🎵 MUSIC -->
+<div id="music" class="section">
+    <h2>Songs that remind me of you ❤️</h2>
+
+    <p>💖 Mon Bébé - Eren Boi</p>
+    <audio controls>
+        <source src="monbebe.mp3" type="audio/mp3">
+    </audio>
+
+    <p>💖 Loveeeeeee Song - Rihanna</p>
+    <audio controls>
+        <source src="love.mp3" type="audio/mp3">
+    </audio>
+</div>
+
+<!-- 📝 NOTES -->
+<div id="notes" class="section">
+    <p>Take care 💕</p>
+    <p>You are my peace 💖</p>
+    <p>You are my future 💍</p>
+</div>
+
+<!-- 📸 GALLERY -->
+<div id="gallery" class="section">
+    <img src="photo1.jpg" width="200">
+    <img src="photo2.jpg" width="200">
+    <img src="photo3.jpg" width="200">
+</div>
+
+<script>
+
+function enterSite() {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("welcomeMessage").style.display = "block";
+    document.getElementById("buttons").style.display = "block";
+
+    document.getElementById("welcomeMessage").innerHTML =
+        "Welcome my Love Emma Carey ❤️";
+}
+
+/* 💍 forever */
+function forever() {
+    document.getElementById("foreverBox").style.display = "block";
+}
+
+function yesForever() {
+    document.getElementById("foreverContent").innerHTML =
+        "<h2 id='yesMessage'>She said YES ❤️💍</h2>";
+}
+
+function noForever() {
+    document.getElementById("foreverContent").innerHTML =
+        "<h2>I’ll still love you forever 💔</h2>";
+}
+
+/* sections */
+function showSection(id) {
+
+    document.getElementById("foreverBox").style.display = "none";
+
+    let msg = document.getElementById("yesMessage");
+    if (msg) msg.remove();
+
+    document.querySelectorAll(".section").forEach(s => s.style.display = "none");
+    document.getElementById(id).style.display = "block";
+
+    if (id === "loveLetter") typeText();
+}
+
+/* letter */
+let text = `My love Emma Carey,
+
+You are the most beautiful part of my life.
+Not just in how you look… but in how you make me feel.
+
+You turned ordinary moments into memories I never want to forget.
+And somehow, without even trying, you became my home.
+
+If I ever lost everything… I’d still be okay,
+as long as I still had you.
+
+Because loving you doesn’t feel like a choice anymore…
+it feels like my truth. ❤️`;
+
+let i = 0;
+
+function typeText() {
+    let el = document.getElementById("typedText");
+    el.innerHTML = "";
+    i = 0;
+
+    let interval = setInterval(() => {
+        if (i < text.length) {
+            el.innerHTML += text[i];
+            i++;
+        } else {
+            clearInterval(interval);
+        }
+    }, 30);
+}
+
+</script>
+
+</body>
+</html>
